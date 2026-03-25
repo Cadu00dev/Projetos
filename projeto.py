@@ -7,6 +7,10 @@ if acao == "adicionar":
     atividades = input("Quais são suas atividade?\n")
     listaatv = atividades.split(",")
     quantidade = len(listaatv)
-    print(f"Voce tem", quantidade,"atividades, sendo elas:", listaatv)
+    visualizar = input("Deseja visualizar suas atividades? digite sim \n")
+    if visualizar == "sim":
+        print(f"Voce tem", quantidade,"atividades, sendo elas:", listaatv)
+    else:
+        print("Suas atividades foram cadastradas com sucesso!")
 else:
     print("Voce nao tem atividades cadastradas.")
