@@ -1,0 +1,24 @@
+name: Validacao da Agenda
+
+on:
+  push:
+    branches: [ "main", "master" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Configurar Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+    - name: Instalar ferramentas
+      run: |
+        pip install pytest flake8
+    - name: Rodar Linting
+      run: |
+        flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+    - name: Rodar Testes
+      run: |
+        pytest
